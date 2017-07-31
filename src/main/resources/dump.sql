@@ -1,0 +1,18 @@
+CREATE DATABASE `account_db` CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+DROP TABLE IF EXISTS accounts;
+CREATE TABLE accounts (
+ID INT NOT NULL AUTO_INCREMENT
+, acct INT(7)
+, PRIMARY KEY (id)
+);
+
+DROP TABLE IF EXISTS clients;
+CREATE TABLE clients (
+ID INT NOT NULL AUTO_INCREMENT
+, name CHAR(60)
+, account INT(11)
+, PRIMARY KEY (id)
+);
+
+ALTER TABLE accounts ADD UNIQUE (acct);
