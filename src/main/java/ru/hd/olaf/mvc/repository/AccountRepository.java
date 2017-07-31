@@ -13,4 +13,6 @@ public interface AccountRepository extends CrudRepository<Account, Integer> {
     @Query("SELECT COUNT(a) FROM Account a")
     Integer getTotalCount();
 
+    @Query("SELECT MAX(a.id) FROM Account a")
+    Long getCurrentMaxId();
 }

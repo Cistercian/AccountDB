@@ -52,16 +52,19 @@
             success: function (data) {
                 hideLoader();
 
-                if (data.jsonResponseType == 'SUCCESS') {
+                if (data.jsonResponseType != 'ERROR') {
                     $('#id').val(data.entityData.id);
                     $('#name_found').val(data.entityData.name);
                     $('#acct_found').val(data.entityData.acct);
                     $('#btn_delete').removeClass('disabled');
                     $('#btn_delete').attr('onclick', 'displayMessage("delete");return false;');
+
+                    if (data.jsonResponseType == 'INFO')
+                        displayMessage('message', data.message);
                 } else {
                     $('#id').val('');
-                    $('#name_found').val('');
-                    $('#acct_found').val('');
+                    $('#name_found').val(data.message);
+                    $('#acct_found').val(data.message);
                     $('#btn_delete').addClass('disabled');
                     $('#btn_delete').attr('onclick', '');
                 }

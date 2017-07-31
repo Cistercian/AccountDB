@@ -16,7 +16,12 @@ import ru.hd.olaf.util.JsonResponse;
 import ru.hd.olaf.util.JsonResponseType;
 import ru.hd.olaf.util.LogUtil;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.FutureTask;
 
 /**
  * Created by Olaf on 31.07.2017.
@@ -30,6 +35,13 @@ public class AccountServiceImpl implements AccountService {
     private ClientRepository clientRepository;
 
     private static final Logger logger = LoggerFactory.getLogger(AccountServiceImpl.class);
+
+
+    private static final byte COUNT_THREAD = 10;
+
+    private static final ExecutorService executorService = Executors.newFixedThreadPool(COUNT_THREAD);
+
+    private static final int COUNT_CREATED_ENTITIES = 1000;
 
     public List<Account> findAll() {
         return Lists.newArrayList(accountRepository.findAll());
@@ -47,14 +59,50 @@ public class AccountServiceImpl implements AccountService {
     public void mockData() {
         logger.debug(LogUtil.getMethodName());
 
-        for (int i = 0; i < 10000; i ++){
-            Account account = new Account(String.valueOf(i));
-            accountRepository.save(account);
+        long currentId = accountRepository.getCurrentMaxId();
+/*
+        if (COUNT_CREATED_ENTITIES > COUNT_THREAD) {
+            List<Boolean> futureListCreators = new ArrayList<Boolean>();
+            for (int i = 0; i < COUNT_THREAD; i++){
+                int distance = COUNT_CREATED_ENTITIES / COUNT_THREAD;
 
-            Client client = new Client(String.format("client_%d", i), account);
-            clientRepository.save(client);
+                FutureTask futureTask = executorService.submit(new CreatorEntities(
+                        distance * i,
+                        distance * (i + 1)));
+            }
+        } else {*/
+            createEntities(0, COUNT_CREATED_ENTITIES, currentId);
+        /*}*/
+    }
+
+    class CreatorEntities implements Callable<Boolean>{
+        private int startCount;
+        private int endCount;
+
+        public CreatorEntities(int startCount, int endCount) {
+            this.startCount = startCount;
+            this.endCount = endCount;
         }
 
+        public Boolean call() throws Exception {
+            try {
+                createEntities(startCount, endCount, 0);
+            } catch (Exception e) {
+                return false;
+            }
+
+            return true;
+        }
+    }
+
+    private void createEntities(int startCount, int endCount, long currentId) {
+        for (int i = startCount; i <= endCount; i++) {
+            Account account = new Account(String.valueOf(++currentId));
+            accountRepository.save(account);
+
+            Client client = new Client(String.format("client_%d", currentId), account);
+            clientRepository.save(client);
+        }
     }
 
     public JsonResponse findEntity(String query){
@@ -63,16 +111,21 @@ public class AccountServiceImpl implements AccountService {
         if (query == null)
             throw new IllegalArgumentException();
 
-        EntityData entityData = clientRepository.findEntity(query);
+        List<EntityData> entityData = clientRepository.findEntity(query);
 
         JsonResponse jsonResponse;
         String message;
-        if (entityData != null) {
-            message = "Данные найдены";
-            jsonResponse = new JsonResponse(JsonResponseType.SUCCESS, message, entityData);
+        if (entityData != null && entityData.size() > 0) {
+            if (entityData.size() > 1) {
+                message = String.format("Найдено больше 1 записи (совпадений: %d)", entityData.size());
+                jsonResponse = new JsonResponse(JsonResponseType.INFO, message, entityData.get(0));
+            } else {
+                message = "Данные найдены";
+                jsonResponse = new JsonResponse(JsonResponseType.SUCCESS, message, entityData.get(0));
+            }
         } else {
             message = "Данные по искомой строке не найдены";
-            jsonResponse = new JsonResponse(JsonResponseType.INFO, message);
+            jsonResponse = new JsonResponse(JsonResponseType.ERROR, message);
         }
 
         logger.debug(jsonResponse.toString());
