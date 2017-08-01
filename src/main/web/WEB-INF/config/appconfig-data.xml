@@ -49,22 +49,13 @@
         <property name="entityManagerFactory" ref="emf"/>
     </bean>
 
-    <!-- Need for Repository abstraction -->
     <jpa:repositories base-package="ru.hd.olaf.mvc.repository" entity-manager-factory-ref="emf"
                       transaction-manager-ref="transactionManager"/>
 
-    <!-- Enable annotation driven transaction management -->
     <tx:annotation-driven/>
 
-    <!-- Static Resources Configuration (getOne access to static sources such as CSS and JavaScript files) -->
-    <!-- need to prevent "No 'Access-Control-Allow-Origin' header" error -->
     <mvc:resources mapping="/resources/**" location="/resources/"/>
-    <!--@Transaction annotation support -->
-    <!--<tx:annotation-driven transaction-manager="transactionManager"/>-->
-    <!--Activates various annotations to be detected in bean classes: Spring's @Required and @Autowired and so on-->
-    <context:annotation-config/>
 
-    <!--Scanning components in base-package (look for annotations) -->
-    <!--<context:component-scan base-package="ru.hd.olaf"/>-->
+    <context:annotation-config/>
 
 </beans>

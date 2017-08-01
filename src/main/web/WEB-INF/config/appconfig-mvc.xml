@@ -11,34 +11,11 @@
 	   http://www.springframework.org/schema/context/spring-context-3.0.xsd
 ">
 
-    <!--
-        mvc:annotation-driven configures Spring MVC annotations
-        Support for validating @Controller inputs with @Valid, if a JSR-303 Provider is present on the classpath.
-        HttpMessageConverter support for @RequestBody method parameters and @ResponseBody method return values
-        from @RequestMapping or @ExceptionHandler methods.
-        <mvc:annotation-driven/>
-     -->
     <mvc:annotation-driven />
 
-    <!-- Static Resources Configuration (getOne access to static sources such as CSS and JavaScript files) -->
     <mvc:resources mapping="/resources/**" location="/resources/" />
 
-
-    <!-- context:component-scan This tag will scan @Component, @Repository, @Service, @Controller
-         and also resolves @Autowired and @Qualifier -->
-    <!--<context:component-scan base-package="ru.hd.olaf" />-->
-    <!--<context:annotation-config/>-->
-
-
-
-    <!--org.springframework.web.servlet.PageNotFound.noHandlerFound No mapping found
-    for HTTP request with URI [/jdbcUpdate/user/username/user@javastudy.ru/enabled/resources/css/bootstrap.css]
-     in DispatcherServlet with name 'dispatcherServlet'-->
-    <!--<mvc:default-servlet-handler/>-->
-
-    <!-- ViewResolver bean config for mapping strings to jsp views -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <!-- Example: a logical view name of 'showMessage' is mapped to '/WEB-INF/jsp/showMessage.jsp' -->
         <property name="order" value="1" />
         <property name="prefix" value="/WEB-INF/view/" />
         <property name="suffix" value=".jsp" />
