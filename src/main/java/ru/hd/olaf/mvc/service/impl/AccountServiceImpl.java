@@ -41,7 +41,7 @@ public class AccountServiceImpl implements AccountService {
 
     private static final ExecutorService executorService = Executors.newFixedThreadPool(COUNT_THREAD);
 
-    private static final int COUNT_CREATED_ENTITIES = 1000;
+    private static final int COUNT_CREATED_ENTITIES = 1000000;
 
     public List<Account> findAll() {
         return Lists.newArrayList(accountRepository.findAll());
