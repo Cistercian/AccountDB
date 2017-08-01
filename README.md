@@ -5,6 +5,7 @@
 Приложение написано на java с использованием фреймворка Spring(используются Spring MVC, JSP, JPA с провайдером Hibernate). Используемая СУБД: MySQL.
 
 **Развернутое приложение:** <http://5.189.96.147:83>
+
 ---
 
 ### Структура БД:
@@ -21,9 +22,7 @@ CREATE TABLE `accounts` (
   UNIQUE KEY `acct` (`acct`)
   
 ) ENGINE=InnoDB AUTO_INCREMENT=2102006 DEFAULT CHARSET=utf8;
-
 ---
-
 CREATE TABLE `clients` (
 
   `ID` int(11) NOT NULL AUTO_INCREMENT,
@@ -41,6 +40,8 @@ CREATE TABLE `clients` (
   CONSTRAINT `FKl609765alqsk2x2s7lclwelr9` FOREIGN KEY (`account`) REFERENCES `accounts` (`ID`)
   
 ) ENGINE=InnoDB AUTO_INCREMENT=2102204 DEFAULT CHARSET=utf8;
+
+---
 
 Схема взаимодействия на програмном уровне:
 ### DAO уровень
