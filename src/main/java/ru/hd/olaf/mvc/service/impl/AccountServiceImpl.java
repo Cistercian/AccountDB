@@ -26,7 +26,7 @@ import java.util.concurrent.Future;
 /**
  * Created by Olaf on 31.07.2017.
  *
- * Единственный сервисный уровень...
+ * Единственный класс сервисного уровня...
  */
 @Service
 public class AccountServiceImpl implements AccountService {

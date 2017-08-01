@@ -39,7 +39,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
-          <factory-entry name="emf" value="7c80cb50-539b-47ae-808e-46004ecacc8c" />
+          <factory-entry name="applicationHibernate" value="7c80cb50-539b-47ae-808e-46004ecacc8c" />
         </datasource-mapping>
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/META-INF/persistence.xml" />
       </configuration>
