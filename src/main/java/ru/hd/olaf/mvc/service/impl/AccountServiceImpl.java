@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.hd.olaf.entities.Account;
 import ru.hd.olaf.entities.Client;
 import ru.hd.olaf.mvc.repository.AccountRepository;
@@ -59,12 +60,15 @@ public class AccountServiceImpl implements AccountService {
     /**
      * Функция служебного удаления данных (связанное удаление записец accounts -> clients)
      */
+    @Transactional
     public void deleteData() {
         logger.debug(LogUtil.getMethodName());
 
-        for (Account account : accountRepository.findAll()) {
-            accountRepository.delete(account);
-        }
+        clientRepository.deleteData();
+        //testing transactions
+//        if (true)
+//            throw new RuntimeException();
+        accountRepository.deleteData();
 
     }
 
@@ -152,6 +156,7 @@ public class AccountServiceImpl implements AccountService {
      * @param endCount      //конечный номер создаваемой пары
      * @param currentId     //начальный уникальный номер (для уникального поля accounts.acct)
      */
+    @Transactional
     private void createEntities(int startCount, int endCount, long currentId) {
         int count = 0;
         for (int i = startCount; i <= endCount; i++) {
@@ -244,6 +249,7 @@ public class AccountServiceImpl implements AccountService {
      * @param id primary key удаляемой записи таблицы accounts (clients удаляется по связи)
      * @return  Объект JsonResponse с результатом операции
      */
+    @Transactional
     public JsonResponse deleteEntity(Integer id) {
         logger.debug(LogUtil.getMethodName());
 

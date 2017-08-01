@@ -49,7 +49,8 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-xs-12 col-md-12">
-                            <p class='text-justify'>Здесь вы можете очистить БД и заполнить ее заново</p>
+                            <p class='text-justify'>Здесь вы можете очистить БД и заполнить ее заново. Будьте предусмотрительны - операции очень длительные по времени.</p>
+                            <p class='text-justify'>Повторное нажатие кнопки "Заполнить" до завершения предыдущей итерации приведет к нарушению валидации на уровне БД - нарушение уникальности генерируемого поля account.acct. Но импорт должен корректно остановиться.</p>
                         </div>
                         <div class="col-xs-12 col-md-6">
                             <button class="btn-lg btn-primary btn-block wam-btn-2" type="submit"

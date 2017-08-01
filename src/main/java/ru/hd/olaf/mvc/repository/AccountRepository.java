@@ -1,6 +1,7 @@
 package ru.hd.olaf.mvc.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import ru.hd.olaf.entities.Account;
@@ -27,4 +28,8 @@ public interface AccountRepository extends JpaRepository<Account, Integer> {
      */
     @Query("SELECT COALESCE(MAX(a.id), 0) FROM Account a")
     Long getCurrentMaxId();
+
+    @Modifying
+    @Query("DELETE FROM Account ")
+    void deleteData();
 }
