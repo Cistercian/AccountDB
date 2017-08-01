@@ -25,4 +25,11 @@ public interface ClientRepository extends JpaRepository<Client, Integer> {
             "WHERE ?1 != NULL AND (c.name = ?1 OR a.acct = ?1) ")
     List<EntityData> findEntity(String query);
 
+    /**
+     * Возвращает кол-во записей в таблице
+     * @return Integer
+     */
+    @Query("SELECT COUNT(c) FROM Client c")
+    Integer getTotalCount();
+
 }

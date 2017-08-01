@@ -267,6 +267,6 @@ public class AccountServiceImpl implements AccountService {
      */
     public Integer getTotalCount() {
         logger.debug(LogUtil.getMethodName());
-        return accountRepository.getTotalCount();
+        return accountRepository.getTotalCount() + clientRepository.getTotalCount();
     }
 }
