@@ -6,6 +6,8 @@ import java.util.List;
 
 /**
  * Created by d.v.hozyashev on 26.04.2017.
+ *
+ * Служебный класс для работы с логгером
  */
 public class LogUtil {
 

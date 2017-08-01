@@ -11,18 +11,16 @@
     <meta charset="utf-8">
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>WebAccountManager</title>
+    <title>Работа с БД</title>
 
     <!-- css -->
     <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/resources/css/animate.css">
     <link rel="stylesheet" href="/resources/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
 
     <!-- js -->
     <script src="/resources/js/jquery.js"></script>
     <script src="/resources/js/bootstrap.min.js"></script>
-    <script src="/resources/js/wow.min.js"></script>
 </head>
 <body>
 
@@ -36,7 +34,6 @@
                 <h3 class="wam-margin-top-2 text-justify ">Возникла непредвиденная ошибка!</h3>
                 <p class="lead wam-margin-top-4 text-justify">Все администраторы оповещены о произошедшем, внутренние ресурсы активизированы, внимание
                     сосредоточено, а отвлекающие факторы изничтожены!</p>
-                <p class="text-justify">Пожалуйста, <a href="/about.html">опишите действия</a>, приведшие к получению данной ошибки.</p>
             </div>
         </div>
     </div>

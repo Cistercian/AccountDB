@@ -4,14 +4,17 @@ import javax.persistence.*;
 
 /**
  * Created by Olaf on 31.07.2017.
+ *
+ * Сущность таблицы accounts - хранит данные о лицевом счете
  */
 @Entity
 @Table(name = "accounts", schema = "account_db")
 public class Account {
-    private Integer id;
-    private String acct;
+    private Integer id;     //id (primary key) записи
+    private String acct;    //лицевой счет
 
-    private Client client;
+    private Client client;  //логическая ссылка на запись таблицы clients
+                            // (в БД поле отсутствует - связь один к одному на стороне таблице clients)
 
     public Account() {
     }

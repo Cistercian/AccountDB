@@ -11,18 +11,16 @@
     <meta charset="utf-8">
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>WebAccountManager</title>
+    <title>Работа с БД</title>
 
     <!-- css -->
     <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/resources/css/animate.css">
     <link rel="stylesheet" href="/resources/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
 
     <!-- js -->
     <script src="/resources/js/jquery.js"></script>
     <script src="/resources/js/bootstrap.min.js"></script>
-    <script src="/resources/js/wow.min.js"></script>
 </head>
 <body>
 
@@ -38,7 +36,7 @@
                 <p>Указан несуществующий адрес страницы</p>
                 <p>Попытка перейти по устаревшему адресу</p>
                 <p>Бобры сточили ссылку</p>
-                <p class="lead wam-margin-top-4">Перейти на <a href="/index">главную страницу</a></p>
+                <p class="lead wam-margin-top-4">Перейти на <a href="/">главную страницу</a></p>
             </div>
         </div>
     </div>

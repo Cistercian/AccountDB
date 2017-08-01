@@ -2,11 +2,12 @@ package ru.hd.olaf.util;
 
 /**
  * Created by Olaf on 31.07.2017.
+ * Служебный класс для передачи на фронт данных о найденной паре записец accounts-clients
  */
 public class EntityData {
-    private Integer id;
-    private String name;
-    private String acct;
+    private Integer id;         //accounts.id
+    private String name;        //ФИО абонента
+    private String acct;        //Лицевой счет
 
     public EntityData() {
     }

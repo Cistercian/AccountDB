@@ -35,9 +35,6 @@
 <jsp:include page="/WEB-INF/view/tags/nav-panel.jsp"></jsp:include>
 
 <script language="javascript" type="text/javascript">
-    $(document).ready(function () {
-
-    })
     function findEntity(){
         $.ajax({
             url: '/findEntity',

@@ -4,11 +4,13 @@ import javax.persistence.Transient;
 
 /**
  * Created by Olaf on 31.07.2017.
+ *
+ * Служебный класс, реализующий возвращаемый в формате JSON результат ручной работы с БД (поиск, создание, удаление)
  */
 public class JsonResponse {
-    private JsonResponseType jsonResponseType;
-    private String message;
-    private EntityData entityData;
+    private JsonResponseType jsonResponseType;      //Тип результата
+    private String message;                         //Описание результата
+    private EntityData entityData;                  //Объект, содержащий в себе данные найденной пары accounts-clients
 
     public JsonResponse() {
     }
