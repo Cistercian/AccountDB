@@ -23,14 +23,22 @@ CREATE TABLE `accounts` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2102006 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `clients` (
+
   `ID` int(11) NOT NULL AUTO_INCREMENT,
+  
   `name` char(60) DEFAULT NULL,
+  
   `account` int(11) DEFAULT NULL,
+  
   PRIMARY KEY (`ID`),
+  
   KEY `FKl609765alqsk2x2s7lclwelr9` (`account`),
+  
   KEY `name` (`name`),
+  
   CONSTRAINT `FKl609765alqsk2x2s7lclwelr9` FOREIGN KEY (`account`) REFERENCES `accounts` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=1937929 DEFAULT CHARSET=utf8
+  
+) ENGINE=InnoDB AUTO_INCREMENT=2102204 DEFAULT CHARSET=utf8;
 
 Схема взаимодействия на програмном уровне:
 ### DAO уровень
