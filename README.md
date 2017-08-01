@@ -22,6 +22,7 @@ CREATE TABLE `accounts` (
   UNIQUE KEY `acct` (`acct`)
   
 ) ENGINE=InnoDB AUTO_INCREMENT=2102006 DEFAULT CHARSET=utf8;
+
 ---
 CREATE TABLE `clients` (
 
