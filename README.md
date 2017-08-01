@@ -11,11 +11,16 @@
 ![Схема](http://5.189.96.147/schema_account_db.png)
 
 CREATE TABLE `accounts` (
+
   `ID` int(11) NOT NULL AUTO_INCREMENT,
+  
   `acct` int(7) DEFAULT NULL,
+  
   PRIMARY KEY (`ID`),
+  
   UNIQUE KEY `acct` (`acct`)
-) ENGINE=InnoDB AUTO_INCREMENT=1917642 DEFAULT CHARSET=utf8
+  
+) ENGINE=InnoDB AUTO_INCREMENT=2102006 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `clients` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
